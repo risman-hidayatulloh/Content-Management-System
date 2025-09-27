@@ -14,12 +14,12 @@ Deliverables (WAJIB dikumpulkan):
 
 1. Repository kode sumber dengan struktur rapi.
 2. README lengkap berisi:
-   - Cara menjalankan di development.
-   - Cara menjalankan test suite.
-   - Instruksi migrasi DB dan seed data.
-   - Daftar endpoint API + contoh request/response.
-   - Akun demo (username/password) dan peran.
-   - Singkat trade-offs/pilihan arsitektural.
+   - Cara menjalankan di development. `(make dev)`
+   - Cara menjalankan test suite. `(-)`
+   - Instruksi migrasi DB dan seed data. `(make migrate-up)`
+   - Daftar endpoint API + contoh request/response. `(ada file postman di folder docs)`
+   - Akun demo (username/password) dan peran. `("email": "admin@example.com", "password": "admin123" - Role Admin)`
+   - Singkat trade-offs/pilihan arsitektural. `(trade-offs: JSONB, REST, FS Media)`
 3. Skrip / mekanisme migrasi database.
 4. Test suite: unit tests, integration tests, dan minimal 1 e2e test.
 5. Contoh data (seed) dan akun pengguna demo.

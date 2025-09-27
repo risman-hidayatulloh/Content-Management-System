@@ -1,0 +1,322 @@
+{
+	"info": {
+		"_postman_id": "aecb3c34-f8da-4111-bd45-cb93bfadd4b8",
+		"name": "Fullstack CMS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4059204"
+	},
+	"item": [
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Content Types",
+					"item": [
+						{
+							"name": "Content {types} Entries",
+							"item": [
+								{
+									"name": "LIST",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:4000/admin/content/article/entries",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"admin",
+												"content",
+												"article",
+												"entries"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "DETAIL",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:4000/admin/content/article/entries/2f8bc399-e241-48ff-9b91-d3fdbb87335e",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"admin",
+												"content",
+												"article",
+												"entries",
+												"2f8bc399-e241-48ff-9b91-d3fdbb87335e"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "CREATE",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "X-CSRF-Token",
+												"value": "rk24q0INeqHl1YaRp8/jYHp6e7GmWmDPjyRVJutZpm8OguL94MNfBMOyuvtjqqfkKIVxtRRhS+GoEvUzwGyg+A==",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"title\": \"Hello World 2\",\n    \"body\": \"<b>bold 2</b> and <script>alert(2)</script>\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/admin/content/article/entries",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"admin",
+												"content",
+												"article",
+												"entries"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "LIST",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:4000/admin/content-types",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"admin",
+										"content-types"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DETAIL",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:4000/admin/content-types/85946089-85f0-453e-a3b6-2f4de0e3b548",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"admin",
+										"content-types",
+										"85946089-85f0-453e-a3b6-2f4de0e3b548"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CREATE",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-CSRF-Token",
+										"value": "rk24q0INeqHl1YaRp8/jYHp6e7GmWmDPjyRVJutZpm8OguL94MNfBMOyuvtjqqfkKIVxtRRhS+GoEvUzwGyg+A==",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Post\",\n    \"slug\": \"post\",\n    \"fields\": [\n        {\n            \"name\": \"Title\",\n            \"key\": \"title\",\n            \"type\": \"string\",\n            \"required\": true,\n            \"order\": 1\n        },\n        {\n            \"name\": \"Body\",\n            \"key\": \"body\",\n            \"type\": \"markdown\",\n            \"required\": false,\n            \"order\": 2\n        },\n        {\n            \"name\": \"Cover\",\n            \"key\": \"cover\",\n            \"type\": \"relation\",\n            \"isRelation\": true,\n            \"relationTo\": \"media\",\n            \"order\": 3\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/admin/content-types",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"admin",
+										"content-types"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DELETE",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "X-CSRF-Token",
+										"value": "rk24q0INeqHl1YaRp8/jYHp6e7GmWmDPjyRVJutZpm8OguL94MNfBMOyuvtjqqfkKIVxtRRhS+GoEvUzwGyg+A==",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:4000/admin/content-types/782b245f-8560-4847-8471-fe02aad02caf",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"admin",
+										"content-types",
+										"782b245f-8560-4847-8471-fe02aad02caf"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "MEDIA",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-CSRF-Token",
+								"value": "rk24q0INeqHl1YaRp8/jYHp6e7GmWmDPjyRVJutZpm8OguL94MNfBMOyuvtjqqfkKIVxtRRhS+GoEvUzwGyg+A=="
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/Users/risman/Desktop/Screenshot 2025-07-15 at 14.04.52.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:4000/admin/media",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"admin",
+								"media"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "1. Check Healthz",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/healthz",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"healthz"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2. Check CSRF",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/csrf",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"csrf"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3. Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-CSRF-Token",
+						"value": "rk24q0INeqHl1YaRp8/jYHp6e7GmWmDPjyRVJutZpm8OguL94MNfBMOyuvtjqqfkKIVxtRRhS+GoEvUzwGyg+A=="
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"admin@example.com\",\n    \"password\": \"admin123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/admin/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"admin",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
