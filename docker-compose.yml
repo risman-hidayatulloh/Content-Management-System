@@ -1,0 +1,54 @@
+services:
+  db:
+    platform: linux/arm64
+    image: postgres:16
+    environment:
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: cms
+    ports: ["5432:5432"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d cms || exit 1"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+
+  server:
+    platform: linux/arm64
+    build:
+      context: ./server
+      target: dev
+    environment:
+      # PORT: "4000"
+      DB_DSN: "postgres://postgres:pass@db:5432/cms?sslmode=disable"
+      # ADMIN_ORIGIN: "http://localhost:3000"
+      # JWT_SECRET: "devsecret"
+      # CSRF_KEY: "32byteslongsecret32byteslongse"
+      # MEDIA_DIR: "/data/media"
+      # SEED_ADMIN_EMAIL: "admin@example.com"
+      # SEED_ADMIN_PASSWORD: "admin123"
+    volumes:
+      - ./server:/app # <<=== mount source code (agar Air melihat perubahan)
+      - ./data/media:/data/media
+    depends_on: [db]
+    ports: ["4000:4000"]
+    profiles: ["dev"]
+
+  server-prod:
+    build:
+      context: ./server
+      target: prod # <<=== PROD image distroless
+    environment:
+      # PORT: "4000"
+      DB_DSN: "postgres://postgres:pass@db:5432/cms?sslmode=disable"
+      # ADMIN_ORIGIN: "http://localhost:3000"
+      # JWT_SECRET: "devsecret"
+      # CSRF_KEY: "32byteslongsecret32byteslongse"
+      # MEDIA_DIR: "/data/media"
+      # SEED_ADMIN_EMAIL: "admin@example.com"
+      # SEED_ADMIN_PASSWORD: "admin123"
+      # CONFIG_PATH: "/app/config.toml"
+    volumes:
+      - ./data/media:/data/media # <<=== JANGAN mount ./server:/app di prod!
+    depends_on: [db]
+    ports: ["4000:4000"]
+    profiles: ["prod"]

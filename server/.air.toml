@@ -1,0 +1,14 @@
+[build]
+cmd = "go build -o /tmp/server ./cmd/api"
+bin = "/tmp/server"
+include_ext = ["go","mod","sum"]
+exclude_dir = ["vendor","tmp",".git","data","node_modules"]
+delay = 500
+stop_on_error = true
+log = "build-errors.log"
+
+[log]
+time = true
+
+[env]
+PORT = "4000"
